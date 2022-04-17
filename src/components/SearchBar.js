@@ -4,15 +4,17 @@ import "./SearchBar.css";
 class SearchBar extends React.Component {
   state = {term: ''}
 
-  onFormSubmit(event) {
+  onFormSubmit = (event) => {
     event.preventDefault();
+    this.props.onSubmit(this.state.term);
+
   }
 
   render() {
     return (
       <div className="ui segment">
         <form onSubmit={this.onFormSubmit} className="ui form">
-          <div class="ui icon input field">
+          <div className="ui icon input field">
             <input
               className="search-bar"
               type="text"
@@ -20,7 +22,7 @@ class SearchBar extends React.Component {
               value={this.state.term}
               onChange={(e) => this.setState({ term: e.target.value})}
             />
-            <i class="search icon"></i>
+            <i className="search icon"></i>
           </div>
         </form>
       </div>
